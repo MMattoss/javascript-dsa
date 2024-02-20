@@ -96,11 +96,26 @@ class LinkedList {
         return false;
     }
 
+    insert(index, value) {
+        if(index === 0) return this.unshift(value);
+        if(index === this.length) return this.push(value);
+
+        let target = this.get(index - 1);
+        if (target) {
+            let newNode = new Node(value);
+            newNode.next = target.next;
+            target.next = newNode;
+            this.length++;
+            return true;
+        }
+        return false;
+    }
+
 }
 
 let my_list = new LinkedList(0);
 my_list.push(1);
 my_list.push(2);
 my_list.push(3);
-console.log(my_list.set(1, 20));
+my_list.insert(2, 11)
 my_list.printList()
