@@ -111,11 +111,29 @@ class LinkedList {
         return false;
     }
 
+    remove(index) {
+        if (!this.head) return null;
+        if (index === 0) return this.shift();
+        if (index === this.length) return this.pop();
+        let temp = this.get(index - 1);
+        if(temp) {
+            let target = temp.next;
+            temp.next = target.next;
+            target.next = null;
+            this.length--;
+            if(this.length === 0) {
+                this.head = null;
+                this.tail = null;
+            }
+            return target;
+        }
+    }
+
 }
 
 let my_list = new LinkedList(0);
 my_list.push(1);
 my_list.push(2);
 my_list.push(3);
-my_list.insert(2, 11)
+my_list.remove(-1)
 my_list.printList()
