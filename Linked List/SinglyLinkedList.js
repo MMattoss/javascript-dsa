@@ -124,16 +124,31 @@ class LinkedList {
             if(this.length === 0) {
                 this.head = null;
                 this.tail = null;
-            }
+            };
             return target;
-        }
+        };
+    }
+
+    reverse() {
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+        let nxt = temp.next;
+        let prev = null;
+        while (nxt) {
+            nxt = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = nxt;
+        };
+        return this;
     }
 
 }
 
 let my_list = new LinkedList(0);
-my_list.push(1);
-my_list.push(2);
 my_list.push(3);
-my_list.remove(-1)
+my_list.push(2);
+my_list.push(1);
+my_list.reverse()
 my_list.printList()
