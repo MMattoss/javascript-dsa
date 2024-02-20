@@ -66,4 +66,25 @@ class LinkedList {
         return temp;
     }
 
+    shift() {
+        if (!this.head) return null;
+        let temp = this.head;
+        this.head = temp.next;
+        temp.next = null;
+        this.length--;
+        if(this.length === 0) {
+            this.tail = null;
+        }
+        return temp;
+    }
+
 }
+
+let my_list = new LinkedList(0);
+my_list.push(1);
+my_list.push(2);
+my_list.push(3);
+my_list.printList();
+console.log("");
+my_list.shift()
+my_list.printList()
