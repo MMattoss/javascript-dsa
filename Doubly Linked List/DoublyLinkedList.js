@@ -26,4 +26,18 @@ class DoublyLinkedList {
         this.tail = newNode;
         return true;
     }
+
+    printList() {
+        let temp = this.head;
+        while (temp) {
+            console.log(temp.val);
+            temp = temp.next;
+        }
+    }
 }
+
+const my_dList = new DoublyLinkedList(0);
+my_dList.push(1);
+my_dList.push(2);
+my_dList.push(3);
+my_dList.printList();
